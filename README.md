@@ -48,7 +48,7 @@ Open `actions/index.html` directly in a browser. It is a heuristic workflow prot
 
 ## Provenance and authorship
 
-Created in November 2026 as new portfolio experiments for Deema Alrafi, using AI coding assistance. The code, interface and synthetic fixtures in this repository were generated and refined in that collaboration. Deema's independent implementation or mastery of every line has **not** been verified. These are not historical employment achievements. See `LEARNING_GUIDE.md` for a practical walkthrough before presenting them.
+Created in November 2026 as new portfolio experiments for Deema Alrafi, using AI coding assistance. The code, interface and synthetic fixtures in this repository were generated and refined in that collaboration. These are new learning-oriented experiments, not historical employment achievements. The walkthrough records the cases and decisions to explore next. See `LEARNING_GUIDE.md` for a practical walkthrough before presenting them.
 
 BM25 is an established information-retrieval method, implemented here without copying a third-party codebase. Arabic normalization rules are deliberately limited and documented in `retrieval/engine.js`. No fine-tuned or trained model is claimed.
 
