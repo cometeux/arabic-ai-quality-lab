@@ -1,20 +1,20 @@
 ---
 title: Arabic Retrieval Lab
 emoji: 🔎
-colorFrom: green
+colorFrom: blue
 colorTo: gray
 sdk: static
 app_file: index.html
 pinned: false
 license: mit
-short_description: Arabic search, normalization and evidence checks
+short_description: Arabic lexical, semantic and hybrid evidence search
 ---
 # Arabic Retrieval Lab
 
-Compare raw and normalized BM25 retrieval over 12 fictional Arabic snippets and 30 synthetic development cases. Inspect sources, matched terms, Hit@3, MRR and unsupported queries that still retrieve documents.
+Ask a question and inspect the passages it retrieves. Compare Arabic BM25, multilingual-e5 semantic search, and reciprocal-rank fusion. Import a small public TXT/text corpus, open source spans, and export results or a case-by-case evaluation.
 
-This is a lexical search/evaluation demo, not a trained model or full RAG system. Its labels are AI-assisted, not independently reviewed; there is no held-out set. Reported metrics apply only to the bundled fixture.
+Semantic mode downloads an existing open-source model (around 120 MB plus the runtime/tokenizer) and processes text in the browser. No inference API key. The app retrieves passages; it does not generate answers or establish that a claim is true. The visible synthetic cases are development diagnostics, not an independent benchmark.
 
-Created November 2026 for Deema Alrafi with AI coding assistance. No employer data. Application code runs locally in your browser and sends no input to an inference service.
+Version 0.2. Desktop model inference and core interactions verified. [Code, upstream credits, results and limitations](https://github.com/cometeux/arabic-ai-quality-lab).
 
-[Source, tests, results and limitations](https://github.com/cometeux/arabic-ai-quality-lab) · [Profile](https://huggingface.co/Deema9)
+Created for Deema Alrafi with AI coding assistance. No confidential project files or real organizational data are included.
