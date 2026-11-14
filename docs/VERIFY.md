@@ -58,3 +58,21 @@ Actual local Chrome session:
 The lexical engine does not stem Arabic words: “الكتب” does not match “كتب” by itself. This limitation was observed and remains explicit. The semantic model is optional; the app does not pretend that lexical matching understands synonyms.
 
 Hosted validation, JSON-file restoration, multiple TXT upload and the final responsive check are recorded below when executed. No user-study or production-reliability result is inferred from these functional checks.
+
+
+### Hosted v0.4 verification completed
+
+The public Hugging Face Space was updated in commit 38d1249144245cd05a8f5c8d9de806c087d1099d. GitHub source commit 64cf341c850b1147bb5e4cb2d3ac77dbed98abfc passed all 39 tests, both lexical evaluations, the example evidence verifier and bundled-page reproducibility in Actions run 43623020774.
+
+Observed on the actual hosted app:
+
+- Restored the workspace JSON downloaded from the local browser session: its saved name and two public snippets appeared.
+- Tried an unsupported workspace version: the error appeared and the current name/documents were preserved.
+- Selected two real TXT files through the file picker: both imported together, replacing the corpus with two sources.
+- Saved that public test workspace, reloaded the hosted page, manually restored it, and observed the same name and two sources. This exercised IndexedDB inside the Hugging Face iframe.
+- Inspected workspace controls at 320 CSS pixels using Chrome responsive mode. Labels, input and save/restore/export buttons wrapped within the content width.
+- Loaded the real q8 embedding model on the hosted origin. The paraphrase “كم يوم أقدر أداوم من البيت؟” returned the remote-work source first.
+- Ran the 40-case semantic evaluation again on the hosted app: Hit@3 96.9%, Recall@3 92.2%, MRR 0.894 and nDCG@3 0.879; all eight missing-information cases still returned text.
+- Opened the remote-work source: the exact passage was highlighted, its 0–84 UTF-16 span was displayed, and Escape returned focus to the trigger.
+
+Remaining limits: no independent user study, full screen-reader audit, cross-browser/device certification, load testing, calibrated missing-information refusal, PDF support, or production-access controls. Functional checks do not establish universal reliability.
