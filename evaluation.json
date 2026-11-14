@@ -1,0 +1,20 @@
+{
+  "fixtureVersion": "0.1.0",
+  "scope": "Small synthetic development fixture; no held-out evaluation",
+  "baseline": {
+    "k": 3,
+    "answerable": 26,
+    "hitAtK": 0.7692307692307693,
+    "mrr": 0.7692307692307693,
+    "unanswerable": 4,
+    "unanswerableWithResults": 2
+  },
+  "normalized": {
+    "k": 3,
+    "answerable": 26,
+    "hitAtK": 1,
+    "mrr": 1,
+    "unanswerable": 4,
+    "unanswerableWithResults": 2
+  }
+}

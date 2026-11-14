@@ -1,0 +1,300 @@
+{
+  "version": "0.1.0",
+  "provenance": "Synthetic fixtures authored with AI assistance for this demo; not real policies or independently validated ground truth.",
+  "documents": [
+    {
+      "id": "leave",
+      "title": "إجازة الموظف",
+      "text": "إجازة الموظف السنوية تتطلب موافقة المسؤول قبل تأكيد الحجز."
+    },
+    {
+      "id": "remote",
+      "title": "العمل عن بعد",
+      "text": "العمل عن بعد متاح يومين أسبوعيا بعد موافقة مدير الفريق."
+    },
+    {
+      "id": "travel",
+      "title": "رحلات العمل",
+      "text": "رحلات العمل تتطلب اعتماد الميزانية قبل حجز التذاكر."
+    },
+    {
+      "id": "device",
+      "title": "أجهزة العمل",
+      "text": "أجهزة العمل تعاد لفريق الدعم عند انتهاء التكليف."
+    },
+    {
+      "id": "access",
+      "title": "صلاحيات النظام",
+      "text": "صلاحيات النظام تمنح حسب دور المستخدم وتراجع كل ثلاثة أشهر."
+    },
+    {
+      "id": "privacy",
+      "title": "إخفاء البيانات",
+      "text": "إخفاء البيانات الشخصية مطلوب في بيئة الاختبار قبل مشاركة الملفات."
+    },
+    {
+      "id": "incident",
+      "title": "الإبلاغ عن الحوادث",
+      "text": "الإبلاغ عن الحوادث الأمنية يتم عبر بوابة الدعم مع وصف الأثر."
+    },
+    {
+      "id": "minutes",
+      "title": "محاضر الاجتماعات",
+      "text": "محاضر الاجتماعات تحفظ القرارات والتكليفات والمسؤول وتاريخ التسليم."
+    },
+    {
+      "id": "procurement",
+      "title": "شراء البرمجيات",
+      "text": "شراء البرمجيات يتطلب مراجعة الترخيص واعتماد مالك الميزانية."
+    },
+    {
+      "id": "expense",
+      "title": "استرداد المصروفات",
+      "text": "استرداد المصروفات يتطلب إرفاق الفواتير وإرسال الطلب خلال ثلاثين يوما."
+    },
+    {
+      "id": "training",
+      "title": "طلب التدريب",
+      "text": "طلب التدريب يوضح الهدف التعليمي والمدة وموافقة المدير."
+    },
+    {
+      "id": "backup",
+      "title": "النسخ الاحتياطي",
+      "text": "النسخ الاحتياطي يتم يوميا وتختبر استعادة الملفات شهريا."
+    }
+  ],
+  "cases": [
+    {
+      "id": "q01",
+      "query": "إجازة الموظف",
+      "relevant_ids": [
+        "leave"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q02",
+      "query": "اجازة",
+      "relevant_ids": [
+        "leave"
+      ],
+      "category": "alef"
+    },
+    {
+      "id": "q03",
+      "query": "إِجازَة",
+      "relevant_ids": [
+        "leave"
+      ],
+      "category": "diacritics"
+    },
+    {
+      "id": "q04",
+      "query": "إجـازة",
+      "relevant_ids": [
+        "leave"
+      ],
+      "category": "tatweel"
+    },
+    {
+      "id": "q05",
+      "query": "العمل عن بعد",
+      "relevant_ids": [
+        "remote"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q06",
+      "query": "أسبوعيا",
+      "relevant_ids": [
+        "remote"
+      ],
+      "category": "alef"
+    },
+    {
+      "id": "q07",
+      "query": "رحلات العمل الميزانية",
+      "relevant_ids": [
+        "travel"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q08",
+      "query": "اعتماد الميزانية التذاكر",
+      "relevant_ids": [
+        "travel"
+      ],
+      "category": "multi_term"
+    },
+    {
+      "id": "q09",
+      "query": "أجهزة العمل",
+      "relevant_ids": [
+        "device"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q10",
+      "query": "اجهزة",
+      "relevant_ids": [
+        "device"
+      ],
+      "category": "alef"
+    },
+    {
+      "id": "q11",
+      "query": "صلاحيات النظام",
+      "relevant_ids": [
+        "access"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q12",
+      "query": "تراجع دور المستخدم",
+      "relevant_ids": [
+        "access"
+      ],
+      "category": "multi_term"
+    },
+    {
+      "id": "q13",
+      "query": "إخفاء البيانات",
+      "relevant_ids": [
+        "privacy"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q14",
+      "query": "اخفاء",
+      "relevant_ids": [
+        "privacy"
+      ],
+      "category": "alef"
+    },
+    {
+      "id": "q15",
+      "query": "الإبلاغ عن الحوادث",
+      "relevant_ids": [
+        "incident"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q16",
+      "query": "الابلاغ",
+      "relevant_ids": [
+        "incident"
+      ],
+      "category": "alef"
+    },
+    {
+      "id": "q17",
+      "query": "محاضر الاجتماعات",
+      "relevant_ids": [
+        "minutes"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q18",
+      "query": "القرارات والتكليفات",
+      "relevant_ids": [
+        "minutes"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q19",
+      "query": "شراء البرمجيات",
+      "relevant_ids": [
+        "procurement"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q20",
+      "query": "مراجعة الترخيص",
+      "relevant_ids": [
+        "procurement"
+      ],
+      "category": "multi_term"
+    },
+    {
+      "id": "q21",
+      "query": "استرداد المصروفات",
+      "relevant_ids": [
+        "expense"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q22",
+      "query": "إرفاق",
+      "relevant_ids": [
+        "expense"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q23",
+      "query": "طلب التدريب",
+      "relevant_ids": [
+        "training"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q24",
+      "query": "الهدف التعليمي",
+      "relevant_ids": [
+        "training"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q25",
+      "query": "النسخ الاحتياطي",
+      "relevant_ids": [
+        "backup"
+      ],
+      "category": "exact"
+    },
+    {
+      "id": "q26",
+      "query": "تختبر استعادة الملفات",
+      "relevant_ids": [
+        "backup"
+      ],
+      "category": "multi_term"
+    },
+    {
+      "id": "q27",
+      "query": "العمل عن بعد متاح خمسة أيام",
+      "relevant_ids": [],
+      "category": "unsupported_claim"
+    },
+    {
+      "id": "q28",
+      "query": "شراء البرمجيات بمبلغ مليون ريال",
+      "relevant_ids": [],
+      "category": "unsupported_claim"
+    },
+    {
+      "id": "q29",
+      "query": "ما لون كوكب نبتون",
+      "relevant_ids": [],
+      "category": "out_of_scope"
+    },
+    {
+      "id": "q30",
+      "query": "كم راتب الرئيس التنفيذي",
+      "relevant_ids": [],
+      "category": "out_of_scope"
+    }
+  ]
+}

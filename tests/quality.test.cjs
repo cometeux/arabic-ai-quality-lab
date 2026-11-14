@@ -1,0 +1,13 @@
+const test=require('node:test');const assert=require('node:assert/strict');
+const R=require('../retrieval/engine.js');const A=require('../actions/engine.js');
+test('normalization handles alef, diacritics, tatweel and alif maqsura',()=>{assert.deepEqual(R.tokens('إِجَازَة مُـوَظَّف على'),['اجازة','موظف','علي']);});
+test('baseline preserves Arabic differences',()=>{assert.notDeepEqual(R.tokens('إجازة',false),R.tokens('اجازة',false));});
+test('rank returns exact evidence and suppresses zero scores',()=>{assert.equal(R.rank('قمر',[{id:'1',text:'شمس'}]).length,0);assert.equal(R.rank('اجازة',[{id:'1',text:'إجازة الموظف'},{id:'2',text:'ميزانية المشروع'}])[0].id,'1');});
+test('empty corpus/query are safe',()=>{assert.deepEqual(R.rank('x',[]),[]);assert.deepEqual(R.rank('',[{id:'1',text:'x'}]),[]);});
+test('metrics separate unsupported cases from retrieval hit rate',()=>{const x=R.evaluate([{id:'a',text:'قمر'},{id:'b',text:'شمس'}],[{query:'قمر',relevant_ids:['a']},{query:'شمس',relevant_ids:[]}]);assert.equal(x.hitAtK,1);assert.equal(x.mrr,1);assert.equal(x.unanswerableWithResults,1);});
+test('reciprocal rank is computed from actual ranked list',()=>{const x=R.evaluate([{id:'a',text:'قمر'},{id:'b',text:'قمر'}],[{query:'قمر',relevant_ids:['b']}],true,1);assert.equal(x.hitAtK,0);assert.equal(x.mrr,.5);});
+test('missing fields cannot pass',()=>{assert.equal(A.review({}).required,3);});
+test('invalid calendar dates rejected',()=>{assert.equal(A.validDate('2026-02-30'),false);assert.equal(A.validDate('2028-02-29'),true);});
+test('complete action passes rule checks without inventing fields',()=>{const x=A.review({task:'إرسال مسودة التقرير للمراجعة',owner:'سارة',due:'2027-01-10'});assert.equal(x.issues.length,0);assert.equal(x.record.owner,'سارة');});
+test('relative date, vague scope, multiple actions and past date are visible',()=>{const codes=A.review({task:'تحسين الخدمة غدا؛ إرسال التقرير',owner:'سارة',due:'2026-01-01',today:'2026-11-14'}).issues.map(i=>i.code);for(const c of ['VAGUE_SCOPE','RELATIVE_DATE','MULTIPLE_ACTIONS','PAST_DUE'])assert.ok(codes.includes(c),c);});
+test('user text stays data, no automatic owner/date inference',()=>{const x=A.review({task:'أرسلها أحمد غدا'});assert.equal(x.record.owner,'');assert.equal(x.record.due,null);});
