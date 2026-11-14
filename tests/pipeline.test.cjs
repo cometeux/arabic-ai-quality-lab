@@ -1,0 +1,10 @@
+const test=require('node:test');const assert=require('node:assert/strict');const P=require('../retrieval/pipeline.js');
+test('corpus validation rejects duplicate IDs and overlarge input',()=>{assert.throws(()=>P.validateDocuments([{id:'a',text:'x'},{id:'a',text:'y'}]));assert.throws(()=>P.validateDocuments([{text:'x'.repeat(80001)}]));assert.throws(()=>P.validateDocuments([]));});
+test('chunk spans preserve evidence exactly, including overlap',()=>{const docs=[{id:'a',title:'A',text:'0123456789'.repeat(12)}];const chunks=P.chunkDocuments(docs,30,5);assert.equal(chunks[1].start,25);for(const c of chunks)assert.equal(P.quote(c,docs).quote,docs[0].text.slice(c.start,c.end));assert.equal(chunks.at(-1).end,120);});
+test('bad chunk sizes cannot cause infinite loops',()=>assert.throws(()=>P.chunkDocuments([],20,20)));
+test('cosine handles zeros and rejects invalid dimensions',()=>{assert.equal(P.cosine([1,0],[1,0]),1);assert.equal(P.cosine([0,0],[1,0]),0);assert.throws(()=>P.cosine([1],[1,2]));assert.throws(()=>P.cosine([NaN],[1]));});
+test('semantic and hybrid ranking use actual supplied vectors',()=>{const chunks=P.chunkDocuments([{id:'a',title:'A',text:'قمر'},{id:'b',title:'B',text:'شمس'}]);const options={mode:'semantic',vectors:[[1,0],[0,1]],queryVector:[0,1]};assert.equal(P.retrieve('نور',chunks,options)[0].sourceId,'b');options.mode='hybrid';assert.equal(P.retrieve('شمس',chunks,options)[0].sourceId,'b');});
+test('semantic failure cannot silently pretend to be model inference',()=>{assert.throws(()=>P.retrieve('سؤال',[],{mode:'semantic'}));});
+test('citation tampering fails closed',()=>{const d=[{id:'a',text:'نص أصلي'}];const c=P.chunkDocuments(d)[0];assert.throws(()=>P.quote({...c,text:'نص مخترع'},d));});
+test('empty query returns no sources in every mode',()=>{assert.deepEqual(P.retrieve('  ',[],{mode:'semantic'}),[]);});
+test('fusion neither duplicates sources nor changes quoted text',()=>{const a={id:'a',text:'أصل',score:9};const r=P.fuse([a],[a]);assert.equal(r.length,1);assert.equal(r[0].text,'أصل');assert.deepEqual(r[0].channels,['lexical','semantic']);});
