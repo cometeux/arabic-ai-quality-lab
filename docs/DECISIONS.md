@@ -27,3 +27,9 @@ New portfolio experiments created in November 2026 with AI coding assistance. Us
 ## Useful next contributions
 
 Deema can add new queries and label their expected sources before tuning, document one failed search, and review a wording flag that overfires. Those activities have not been represented as completed work.
+
+## v0.3: inspect the weakness instead of polishing the score
+
+The portfolio review identified limited evaluation and weak contribution evidence. The follow-up adds a 40-case diagnostic, source-level recall and nDCG, and separates contradicted claims from irrelevant sources. No ranking weights were tuned to this fixture. [Failure analysis](EVALUATION.md).
+
+Two implementation issues were also corrected: ingestion no longer trims the source text before preserving offsets, and noninteger chunk overlap is rejected. The source dialog has an accessible name; both pages have skip links and larger controls; task-list selection restores keyboard focus to the selected task. These changes need browser verification before accessibility claims.

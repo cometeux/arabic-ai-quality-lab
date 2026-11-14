@@ -4,7 +4,7 @@ Two small tools around recurring AI-product questions: where did the evidence co
 
 [Current search demo](https://huggingface.co/spaces/Deema9/arabic-retrieval-lab) · [Current action-review demo](https://huggingface.co/spaces/Deema9/action-review)
 
-Version 0.2 adds semantic retrieval and distinct task-focused workspaces. [Verification record](docs/VERIFY.md).
+Version 0.3 adds a harder retrieval diagnostic, reproducible source-level metrics, and interaction fixes. [Failure analysis](docs/EVALUATION.md) · [Verification record](docs/VERIFY.md).
 
 ## Search workspace
 
@@ -31,6 +31,7 @@ Node.js 20+; Python 3.9+ for the page builder. No dependencies are needed for of
 ```sh
 npm test
 npm run evaluate
+npm run evaluate:challenge
 python3 scripts/build_pages.py
 python3 -m http.server 8080
 ```
@@ -39,11 +40,16 @@ Open /retrieval/ or /actions/. Lexical search and task rules require no model. S
 
 ## Evaluation
 
+Start with the [40-case challenge and failure analysis](docs/EVALUATION.md). On its 32 cases with relevant sources, normalized BM25 reaches 87.5% Hit@3; paraphrase Hit@3 is 62.5%. These are synthetic diagnostics, not general accuracy. The earlier results below remain available for comparison.
+
+
 The original fixture has 12 fictional documents and 30 visible synthetic development queries. Raw BM25 has 76.9% Hit@3 on the 26 answerable cases; normalized BM25 has 100%. Two of four unsupported cases still retrieve documents. This fixture was designed to exercise normalization, so these are not general Arabic-search accuracy figures. Labels are AI-assisted, not independently reviewed; there is no held-out set. Actual browser runs on this same fixture produced 100% Hit@3 and MRR 1.0 for semantic and hybrid retrieval, but both returned passages for all four unsupported queries. These results are development diagnostics, not general accuracy. Full reports: [semantic](evaluation-semantic.json) and [hybrid](evaluation-hybrid.json).
 
 ## Read the work
 
 - [Design and engineering decisions](docs/DECISIONS.md)
+- [Contribution record](https://github.com/cometeux/cometeux/blob/main/notes/CONTRIBUTIONS.md)
+- [Independent review protocol](docs/REVIEW_PROTOCOL.md)
 - [Verification record](docs/VERIFY.md)
 - [Hands-on walkthrough](LEARNING_GUIDE.md)
 

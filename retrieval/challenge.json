@@ -1,0 +1,452 @@
+{
+  "version": "challenge-1",
+  "provenance": "AI-assisted synthetic diagnostic authored after v0.2; not held-out or independently annotated. No ranking changes were tuned against it.",
+  "label_policy": "Relevant source labels describe passages useful for checking a question, including contradictions. They do not label an answer as true. Empty labels mean the requested fact is absent, even if a related document exists.",
+  "documents": [
+    {
+      "id": "remote",
+      "title": "العمل من المنزل",
+      "text": "يمكن العمل من المنزل يومين في الأسبوع بموافقة مدير الفريق. لا يشمل ذلك فترة التدريب."
+    },
+    {
+      "id": "training",
+      "title": "تدريب الموظفين",
+      "text": "يكون حضور الموظفين خلال فترة التدريب من المكتب طوال الأسبوع."
+    },
+    {
+      "id": "leave",
+      "title": "الإجازة السنوية",
+      "text": "يرسل الموظف طلب الإجازة السنوية إلى المدير قبل الحجز. موافقة المدير شرط لتأكيد الطلب."
+    },
+    {
+      "id": "travel",
+      "title": "السفر للعمل",
+      "text": "حجز تذاكر رحلة العمل يتطلب اعتماد الميزانية. تتولى الإدارة المالية مراجعة المصروفات بعد العودة."
+    },
+    {
+      "id": "travel-cancel",
+      "title": "إلغاء الرحلة",
+      "text": "عند إلغاء رحلة العمل يجب إبلاغ منسق السفر لإلغاء التذاكر، وتقديم طلب استرداد للمالية."
+    },
+    {
+      "id": "device",
+      "title": "تسليم الأجهزة",
+      "text": "بعد انتهاء التكليف يعاد الحاسب المحمول إلى فريق الدعم مع الشاحن. لا يرسل بالبريد الشخصي."
+    },
+    {
+      "id": "device-loss",
+      "title": "فقد الأجهزة",
+      "text": "عند فقد الحاسب يجب إبلاغ أمن المعلومات فورًا. لا تنتظر موعد تسليم الأجهزة."
+    },
+    {
+      "id": "access",
+      "title": "صلاحيات الأنظمة",
+      "text": "تمنح صلاحيات الأنظمة حسب دور الموظف وتراجع كل ثلاثة أشهر. ينتهي الوصول عند انتهاء التكليف."
+    },
+    {
+      "id": "access-request",
+      "title": "طلب صلاحية جديدة",
+      "text": "طلب الوصول الجديد يرفع عبر بوابة الدعم ويحتاج موافقة مالك النظام."
+    },
+    {
+      "id": "privacy",
+      "title": "بيانات الاختبار",
+      "text": "تخفى البيانات الشخصية قبل نقل الملفات إلى بيئة الاختبار. تستخدم أمثلة مصطنعة عندما تكفي للغرض."
+    },
+    {
+      "id": "incident",
+      "title": "الحوادث الأمنية",
+      "text": "ترفع الحوادث الأمنية إلى أمن المعلومات عبر بوابة الدعم، مع وصف الوقت والأثر."
+    },
+    {
+      "id": "minutes",
+      "title": "مراجعة المحضر",
+      "text": "يحتوي المحضر على القرارات والتكليفات وأسماء المسؤولين وتواريخ التسليم. يراجع المنظم المسودة قبل الاعتماد."
+    },
+    {
+      "id": "recording",
+      "title": "تسجيل الاجتماع",
+      "text": "يبلغ المنظم جميع الحضور قبل بدء التسجيل. حفظ التسجيل لا يعني اعتماد محضر الاجتماع."
+    },
+    {
+      "id": "backup",
+      "title": "النسخ الاحتياطي",
+      "text": "تنفذ نسخة احتياطية يوميًا وتختبر الاستعادة شهريًا. النسخ وحده لا يثبت إمكانية استرجاع الملفات."
+    },
+    {
+      "id": "purchase",
+      "title": "شراء البرمجيات",
+      "text": "شراء البرمجيات يحتاج مراجعة الأمن والمشتريات قبل الدفع. هذه الوثيقة لا تحدد سقفًا ماليًا."
+    },
+    {
+      "id": "support",
+      "title": "الدعم الفني",
+      "text": "تستقبل بوابة الدعم الأعطال الفنية. اذكر الجهاز والخطأ والخطوات التي سبقت المشكلة."
+    },
+    {
+      "id": "library",
+      "title": "إعارة الكتب",
+      "text": "تتيح المكتبة إعارة ثلاثة كتب لمدة أسبوعين. التجديد متاح مرة واحدة إذا لم يحجز الكتاب شخص آخر."
+    },
+    {
+      "id": "library-room",
+      "title": "حجز قاعة المكتبة",
+      "text": "تحجز قاعة المكتبة عبر التقويم لمدة ساعتين. حجز القاعة لا يتطلب استعارة كتاب."
+    }
+  ],
+  "cases": [
+    {
+      "id": "c01",
+      "category": "paraphrase",
+      "query": "كم يوم أقدر أداوم من البيت؟",
+      "relevant_source_ids": [
+        "remote"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c02",
+      "category": "paraphrase",
+      "query": "خلص شغلي، وين أسلم اللابتوب؟",
+      "relevant_source_ids": [
+        "device"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c03",
+      "category": "paraphrase",
+      "query": "ضاعت علي آلة العمل، مين أكلم؟",
+      "relevant_source_ids": [
+        "device-loss",
+        "incident"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c04",
+      "category": "paraphrase",
+      "query": "أبي أدخل نظام ما عندي عليه وصول",
+      "relevant_source_ids": [
+        "access-request"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c05",
+      "category": "paraphrase",
+      "query": "مين يشيك مسودة الاجتماع قبل تصير نهائية؟",
+      "relevant_source_ids": [
+        "minutes"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c06",
+      "category": "paraphrase",
+      "query": "الكتاب عندي وأبي أمدد المدة",
+      "relevant_source_ids": [
+        "library"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c07",
+      "category": "paraphrase",
+      "query": "كيف أتأكد أن الملفات ترجع بعد عطل؟",
+      "relevant_source_ids": [
+        "backup"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c08",
+      "category": "paraphrase",
+      "query": "اشترينا تذاكر وبعدين ألغينا السفر، وش نسوي؟",
+      "relevant_source_ids": [
+        "travel-cancel"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c09",
+      "category": "normalization",
+      "query": "اِجَازَة الموظف",
+      "relevant_source_ids": [
+        "leave"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c10",
+      "category": "normalization",
+      "query": "إعاده الاجهزه بعد انتهاء التكليف",
+      "relevant_source_ids": [
+        "device"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c11",
+      "category": "normalization",
+      "query": "إخفاء البيانات الشخصيه في الاختبار",
+      "relevant_source_ids": [
+        "privacy"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c12",
+      "category": "normalization",
+      "query": "صَلاحيّات الأَنْظِمَة",
+      "relevant_source_ids": [
+        "access"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c13",
+      "category": "multi_source",
+      "query": "من يوافق على السفر ومن يراجع المصروفات؟",
+      "relevant_source_ids": [
+        "travel"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c14",
+      "category": "multi_source",
+      "query": "هل أقدر أشتغل من المنزل وأنا في التدريب؟",
+      "relevant_source_ids": [
+        "remote",
+        "training"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c15",
+      "category": "multi_source",
+      "query": "قبل تسجيل الاجتماع وبعد إعداد المحضر، ماذا أفعل؟",
+      "relevant_source_ids": [
+        "recording",
+        "minutes"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c16",
+      "category": "multi_source",
+      "query": "انتهى التكليف، ماذا يحدث للجهاز وللوصول؟",
+      "relevant_source_ids": [
+        "device",
+        "access"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c17",
+      "category": "multi_source",
+      "query": "كيف أبلغ عن فقد الحاسب؟",
+      "relevant_source_ids": [
+        "device-loss",
+        "incident"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c18",
+      "category": "multi_source",
+      "query": "كيف أطلب صلاحية وما قواعد مراجعتها؟",
+      "relevant_source_ids": [
+        "access-request",
+        "access"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c19",
+      "category": "distractor",
+      "query": "كم مدة حجز قاعة المكتبة؟",
+      "relevant_source_ids": [
+        "library-room"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c20",
+      "category": "distractor",
+      "query": "كم مدة استعارة كتب المكتبة؟",
+      "relevant_source_ids": [
+        "library"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c21",
+      "category": "distractor",
+      "query": "هل حفظ التسجيل يعني اعتماد المحضر؟",
+      "relevant_source_ids": [
+        "recording",
+        "minutes"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c22",
+      "category": "distractor",
+      "query": "من يستقبل عطل الجهاز وليس فقده؟",
+      "relevant_source_ids": [
+        "support"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c23",
+      "category": "distractor",
+      "query": "من يلغي التذاكر بعد إلغاء رحلة العمل؟",
+      "relevant_source_ids": [
+        "travel-cancel"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c24",
+      "category": "distractor",
+      "query": "متى تختبر الاستعادة وليس متى تؤخذ النسخة؟",
+      "relevant_source_ids": [
+        "backup"
+      ],
+      "claim_relation": "not_a_claim"
+    },
+    {
+      "id": "c25",
+      "category": "contradictory_claim",
+      "query": "العمل من المنزل متاح خمسة أيام للجميع",
+      "relevant_source_ids": [
+        "remote",
+        "training"
+      ],
+      "claim_relation": "contradicted"
+    },
+    {
+      "id": "c26",
+      "category": "contradictory_claim",
+      "query": "يمكن حضور فترة التدريب من المنزل",
+      "relevant_source_ids": [
+        "training",
+        "remote"
+      ],
+      "claim_relation": "contradicted"
+    },
+    {
+      "id": "c27",
+      "category": "contradictory_claim",
+      "query": "أرسل الجهاز بالبريد الشخصي بعد انتهاء التكليف",
+      "relevant_source_ids": [
+        "device"
+      ],
+      "claim_relation": "contradicted"
+    },
+    {
+      "id": "c28",
+      "category": "contradictory_claim",
+      "query": "أنتظر موعد التسليم إذا فقدت الحاسب",
+      "relevant_source_ids": [
+        "device-loss"
+      ],
+      "claim_relation": "contradicted"
+    },
+    {
+      "id": "c29",
+      "category": "contradictory_claim",
+      "query": "النسخ اليومي يكفي لإثبات استرجاع الملفات",
+      "relevant_source_ids": [
+        "backup"
+      ],
+      "claim_relation": "contradicted"
+    },
+    {
+      "id": "c30",
+      "category": "contradictory_claim",
+      "query": "يبدأ التسجيل دون إبلاغ الحضور",
+      "relevant_source_ids": [
+        "recording"
+      ],
+      "claim_relation": "contradicted"
+    },
+    {
+      "id": "c31",
+      "category": "contradictory_claim",
+      "query": "موافقة المدير على الإجازة غير مطلوبة",
+      "relevant_source_ids": [
+        "leave"
+      ],
+      "claim_relation": "contradicted"
+    },
+    {
+      "id": "c32",
+      "category": "contradictory_claim",
+      "query": "يمكن تجديد إعارة الكتاب دائمًا حتى مع وجود حجز",
+      "relevant_source_ids": [
+        "library"
+      ],
+      "claim_relation": "contradicted"
+    },
+    {
+      "id": "c33",
+      "category": "missing_information",
+      "query": "كم راتب المدير التنفيذي؟",
+      "relevant_source_ids": [],
+      "claim_relation": "not_established"
+    },
+    {
+      "id": "c34",
+      "category": "missing_information",
+      "query": "ما لون كوكب نبتون؟",
+      "relevant_source_ids": [],
+      "claim_relation": "not_established"
+    },
+    {
+      "id": "c35",
+      "category": "missing_information",
+      "query": "كم سعر اشتراك المكتبة؟",
+      "relevant_source_ids": [],
+      "claim_relation": "not_established"
+    },
+    {
+      "id": "c36",
+      "category": "missing_information",
+      "query": "ما الحد المالي لشراء البرمجيات؟",
+      "relevant_source_ids": [],
+      "claim_relation": "not_established"
+    },
+    {
+      "id": "c37",
+      "category": "missing_information",
+      "query": "هل تتوفر إعارة أجهزة لوحية؟",
+      "relevant_source_ids": [],
+      "claim_relation": "not_established"
+    },
+    {
+      "id": "c38",
+      "category": "missing_information",
+      "query": "أين موقع مكتب فريق الدعم؟",
+      "relevant_source_ids": [],
+      "claim_relation": "not_established"
+    },
+    {
+      "id": "c39",
+      "category": "missing_information",
+      "query": "ما مدة الاحتفاظ بتسجيلات الاجتماعات؟",
+      "relevant_source_ids": [],
+      "claim_relation": "not_established"
+    },
+    {
+      "id": "c40",
+      "category": "missing_information",
+      "query": "كم عدد أيام الإجازة السنوية؟",
+      "relevant_source_ids": [],
+      "claim_relation": "not_established"
+    }
+  ]
+}

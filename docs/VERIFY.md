@@ -35,3 +35,11 @@ Verified task editing, owner editing, explicit “after one week” deadline sel
 Inspected the desktop layouts in Chrome. Search uses a navy side rail and a two-column evidence comparison. The meeting notebook uses a task list and a focused editor. Corrected count wording, compacted the notebook heading, and changed the default search to one that shows a useful lexical result immediately.
 
 Not verified: mobile viewport behavior, full keyboard traversal, screen-reader output, cross-browser behavior or production-scale performance. No accessibility-compliance or production-readiness claim is made.
+
+## v0.3 follow-up — 14 November 2026
+
+28 Node tests passed locally. Eight additions cover unique-source metrics, multiple relevant sources, empty sets, contradiction labels, fixture integrity, original whitespace preservation and invalid fractional overlap. The new 40-case challenge was executed with both lexical methods; its full outputs and fixture hash are committed. See [failure analysis](EVALUATION.md). No new semantic/hybrid score is claimed for that fixture.
+
+Native Chrome's responsive preview was set to **320 CSS pixels**. Inspected both local bundled pages: headings, controls, results and the notebook's single-column owner/date fields. The task list intentionally scrolls horizontally within its own strip. Opened the search source dialog: it exposed its source title, focused its close button, closed with Escape and returned focus to its trigger. The new header SVG was also visually inspected in Chrome.
+
+This is a targeted responsive and keyboard check, not full accessibility certification. Screen-reader speech, complete keyboard traversal, multiple physical phones, other browsers and production-scale performance remain unverified. UI source changes are included in this repository; hosted deployment verification is recorded separately when performed.
