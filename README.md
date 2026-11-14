@@ -63,6 +63,10 @@ Start with the [40-case challenge and failure analysis](docs/EVALUATION.md). On 
 
 The original fixture has 12 fictional documents and 30 visible synthetic development queries. Raw BM25 has 76.9% Hit@3 on the 26 answerable cases; normalized BM25 has 100%. Two of four unsupported cases still retrieve documents. This fixture was designed to exercise normalization, so these are not general Arabic-search accuracy figures. Labels are AI-assisted, not independently reviewed; there is no held-out set. Actual browser runs on this same fixture produced 100% Hit@3 and MRR 1.0 for semantic and hybrid retrieval, but both returned passages for all four unsupported queries. These results are development diagnostics, not general accuracy. Full reports: [semantic](evaluation-semantic.json) and [hybrid](evaluation-hybrid.json).
 
+## Review it
+
+[Five-minute public-data tasks](docs/REVIEW_PROTOCOL.md) · [Submit a finding](https://github.com/cometeux/arabic-ai-quality-lab/issues/new?template=independent-review.yml) · [Independent review status](docs/REVIEW_RESULTS.md)
+
 ## Read the work
 
 - [Design and engineering decisions](docs/DECISIONS.md)
