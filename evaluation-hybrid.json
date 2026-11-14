@@ -1,0 +1,816 @@
+{
+  "version": "0.2.0",
+  "fixture": "0.1.0",
+  "mode": "hybrid",
+  "model": {
+    "id": "Xenova/multilingual-e5-small",
+    "base": "intfloat/multilingual-e5-small",
+    "runtime": "@huggingface/transformers@3.8.1",
+    "dtype": "q8",
+    "device": "wasm",
+    "pooling": "mean",
+    "normalize": true,
+    "prefixes": [
+      "query: ",
+      "passage: "
+    ]
+  },
+  "scope": "Synthetic development cases, not independently labeled or held out",
+  "baseline": {
+    "answerable": 26,
+    "hitAt3": 0.7692307692307693,
+    "mrr": 0.7692307692307693,
+    "unsupported": 4,
+    "unsupportedReturningResults": 2
+  },
+  "current": {
+    "answerable": 26,
+    "hitAt3": 1,
+    "mrr": 1,
+    "unsupported": 4,
+    "unsupportedReturningResults": 4
+  },
+  "rows": [
+    {
+      "id": "q01",
+      "query": "إجازة الموظف",
+      "expected": [
+        "leave"
+      ],
+      "baseline": {
+        "ids": [
+          "leave"
+        ],
+        "expected": [
+          "leave"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "leave",
+          "remote",
+          "device"
+        ],
+        "expected": [
+          "leave"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q02",
+      "query": "اجازة",
+      "expected": [
+        "leave"
+      ],
+      "baseline": {
+        "ids": [],
+        "expected": [
+          "leave"
+        ],
+        "rank": 0
+      },
+      "current": {
+        "ids": [
+          "leave",
+          "remote",
+          "device"
+        ],
+        "expected": [
+          "leave"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q03",
+      "query": "إِجازَة",
+      "expected": [
+        "leave"
+      ],
+      "baseline": {
+        "ids": [],
+        "expected": [
+          "leave"
+        ],
+        "rank": 0
+      },
+      "current": {
+        "ids": [
+          "leave",
+          "training",
+          "remote"
+        ],
+        "expected": [
+          "leave"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q04",
+      "query": "إجـازة",
+      "expected": [
+        "leave"
+      ],
+      "baseline": {
+        "ids": [],
+        "expected": [
+          "leave"
+        ],
+        "rank": 0
+      },
+      "current": {
+        "ids": [
+          "leave",
+          "training",
+          "privacy"
+        ],
+        "expected": [
+          "leave"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q05",
+      "query": "العمل عن بعد",
+      "expected": [
+        "remote"
+      ],
+      "baseline": {
+        "ids": [
+          "remote",
+          "incident",
+          "device"
+        ],
+        "expected": [
+          "remote"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "remote",
+          "device",
+          "travel"
+        ],
+        "expected": [
+          "remote"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q06",
+      "query": "أسبوعيا",
+      "expected": [
+        "remote"
+      ],
+      "baseline": {
+        "ids": [
+          "remote"
+        ],
+        "expected": [
+          "remote"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "remote",
+          "backup",
+          "access"
+        ],
+        "expected": [
+          "remote"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q07",
+      "query": "رحلات العمل الميزانية",
+      "expected": [
+        "travel"
+      ],
+      "baseline": {
+        "ids": [
+          "travel",
+          "procurement",
+          "device"
+        ],
+        "expected": [
+          "travel"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "travel",
+          "remote",
+          "device"
+        ],
+        "expected": [
+          "travel"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q08",
+      "query": "اعتماد الميزانية التذاكر",
+      "expected": [
+        "travel"
+      ],
+      "baseline": {
+        "ids": [
+          "travel",
+          "procurement"
+        ],
+        "expected": [
+          "travel"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "travel",
+          "procurement",
+          "expense"
+        ],
+        "expected": [
+          "travel"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q09",
+      "query": "أجهزة العمل",
+      "expected": [
+        "device"
+      ],
+      "baseline": {
+        "ids": [
+          "device",
+          "travel",
+          "remote"
+        ],
+        "expected": [
+          "device"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "device",
+          "remote",
+          "travel"
+        ],
+        "expected": [
+          "device"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q10",
+      "query": "اجهزة",
+      "expected": [
+        "device"
+      ],
+      "baseline": {
+        "ids": [],
+        "expected": [
+          "device"
+        ],
+        "rank": 0
+      },
+      "current": {
+        "ids": [
+          "device",
+          "privacy",
+          "minutes"
+        ],
+        "expected": [
+          "device"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q11",
+      "query": "صلاحيات النظام",
+      "expected": [
+        "access"
+      ],
+      "baseline": {
+        "ids": [
+          "access"
+        ],
+        "expected": [
+          "access"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "access",
+          "minutes",
+          "device"
+        ],
+        "expected": [
+          "access"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q12",
+      "query": "تراجع دور المستخدم",
+      "expected": [
+        "access"
+      ],
+      "baseline": {
+        "ids": [
+          "access"
+        ],
+        "expected": [
+          "access"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "access",
+          "privacy",
+          "device"
+        ],
+        "expected": [
+          "access"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q13",
+      "query": "إخفاء البيانات",
+      "expected": [
+        "privacy"
+      ],
+      "baseline": {
+        "ids": [
+          "privacy"
+        ],
+        "expected": [
+          "privacy"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "privacy",
+          "backup",
+          "device"
+        ],
+        "expected": [
+          "privacy"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q14",
+      "query": "اخفاء",
+      "expected": [
+        "privacy"
+      ],
+      "baseline": {
+        "ids": [],
+        "expected": [
+          "privacy"
+        ],
+        "rank": 0
+      },
+      "current": {
+        "ids": [
+          "privacy",
+          "device",
+          "minutes"
+        ],
+        "expected": [
+          "privacy"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q15",
+      "query": "الإبلاغ عن الحوادث",
+      "expected": [
+        "incident"
+      ],
+      "baseline": {
+        "ids": [
+          "incident",
+          "remote"
+        ],
+        "expected": [
+          "incident"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "incident",
+          "remote",
+          "minutes"
+        ],
+        "expected": [
+          "incident"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q16",
+      "query": "الابلاغ",
+      "expected": [
+        "incident"
+      ],
+      "baseline": {
+        "ids": [],
+        "expected": [
+          "incident"
+        ],
+        "rank": 0
+      },
+      "current": {
+        "ids": [
+          "incident",
+          "privacy",
+          "minutes"
+        ],
+        "expected": [
+          "incident"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q17",
+      "query": "محاضر الاجتماعات",
+      "expected": [
+        "minutes"
+      ],
+      "baseline": {
+        "ids": [
+          "minutes"
+        ],
+        "expected": [
+          "minutes"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "minutes",
+          "device",
+          "privacy"
+        ],
+        "expected": [
+          "minutes"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q18",
+      "query": "القرارات والتكليفات",
+      "expected": [
+        "minutes"
+      ],
+      "baseline": {
+        "ids": [
+          "minutes"
+        ],
+        "expected": [
+          "minutes"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "minutes",
+          "expense",
+          "training"
+        ],
+        "expected": [
+          "minutes"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q19",
+      "query": "شراء البرمجيات",
+      "expected": [
+        "procurement"
+      ],
+      "baseline": {
+        "ids": [
+          "procurement"
+        ],
+        "expected": [
+          "procurement"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "procurement",
+          "travel",
+          "privacy"
+        ],
+        "expected": [
+          "procurement"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q20",
+      "query": "مراجعة الترخيص",
+      "expected": [
+        "procurement"
+      ],
+      "baseline": {
+        "ids": [
+          "procurement"
+        ],
+        "expected": [
+          "procurement"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "procurement",
+          "expense",
+          "backup"
+        ],
+        "expected": [
+          "procurement"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q21",
+      "query": "استرداد المصروفات",
+      "expected": [
+        "expense"
+      ],
+      "baseline": {
+        "ids": [
+          "expense"
+        ],
+        "expected": [
+          "expense"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "expense",
+          "device",
+          "backup"
+        ],
+        "expected": [
+          "expense"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q22",
+      "query": "إرفاق",
+      "expected": [
+        "expense"
+      ],
+      "baseline": {
+        "ids": [
+          "expense"
+        ],
+        "expected": [
+          "expense"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "expense",
+          "incident",
+          "device"
+        ],
+        "expected": [
+          "expense"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q23",
+      "query": "طلب التدريب",
+      "expected": [
+        "training"
+      ],
+      "baseline": {
+        "ids": [
+          "training"
+        ],
+        "expected": [
+          "training"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "training",
+          "expense",
+          "travel"
+        ],
+        "expected": [
+          "training"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q24",
+      "query": "الهدف التعليمي",
+      "expected": [
+        "training"
+      ],
+      "baseline": {
+        "ids": [
+          "training"
+        ],
+        "expected": [
+          "training"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "training",
+          "privacy",
+          "minutes"
+        ],
+        "expected": [
+          "training"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q25",
+      "query": "النسخ الاحتياطي",
+      "expected": [
+        "backup"
+      ],
+      "baseline": {
+        "ids": [
+          "backup"
+        ],
+        "expected": [
+          "backup"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "backup",
+          "travel",
+          "incident"
+        ],
+        "expected": [
+          "backup"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q26",
+      "query": "تختبر استعادة الملفات",
+      "expected": [
+        "backup"
+      ],
+      "baseline": {
+        "ids": [
+          "backup",
+          "privacy"
+        ],
+        "expected": [
+          "backup"
+        ],
+        "rank": 1
+      },
+      "current": {
+        "ids": [
+          "backup",
+          "privacy",
+          "device"
+        ],
+        "expected": [
+          "backup"
+        ],
+        "rank": 1
+      }
+    },
+    {
+      "id": "q27",
+      "query": "العمل عن بعد متاح خمسة أيام",
+      "expected": [],
+      "baseline": {
+        "ids": [
+          "remote",
+          "incident",
+          "device"
+        ],
+        "expected": [],
+        "rank": 0
+      },
+      "current": {
+        "ids": [
+          "remote",
+          "device",
+          "travel"
+        ],
+        "expected": [],
+        "rank": 0
+      }
+    },
+    {
+      "id": "q28",
+      "query": "شراء البرمجيات بمبلغ مليون ريال",
+      "expected": [],
+      "baseline": {
+        "ids": [
+          "procurement"
+        ],
+        "expected": [],
+        "rank": 0
+      },
+      "current": {
+        "ids": [
+          "procurement",
+          "expense",
+          "travel"
+        ],
+        "expected": [],
+        "rank": 0
+      }
+    },
+    {
+      "id": "q29",
+      "query": "ما لون كوكب نبتون",
+      "expected": [],
+      "baseline": {
+        "ids": [],
+        "expected": [],
+        "rank": 0
+      },
+      "current": {
+        "ids": [
+          "remote",
+          "backup",
+          "privacy"
+        ],
+        "expected": [],
+        "rank": 0
+      }
+    },
+    {
+      "id": "q30",
+      "query": "كم راتب الرئيس التنفيذي",
+      "expected": [],
+      "baseline": {
+        "ids": [],
+        "expected": [],
+        "rank": 0
+      },
+      "current": {
+        "ids": [
+          "remote",
+          "expense",
+          "access"
+        ],
+        "expected": [],
+        "rank": 0
+      }
+    }
+  ]
+}
