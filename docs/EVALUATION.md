@@ -47,3 +47,19 @@ Collect public, permissioned examples from independent reviewers; label relevant
 ## Reading the numbers
 
 Hit@3 asks whether any expected source appears among the first three unique sources. Recall@3 asks how many expected sources appear. MRR uses the rank of the first expected source across the returned list. nDCG@3 rewards expected sources appearing early, with binary relevance. These are retrieval measures, not factual-answer accuracy. Cases with no expected source are excluded from those averages and reported separately.
+
+## v0.4 — actual semantic and hybrid runs on Challenge 1
+
+Executed in desktop Chrome with Xenova/multilingual-e5-small q8 and Transformers.js 3.8.1. The browser bundled the same 18 documents and 40 cases. Reports include a corpus digest, model configuration, unique-source metrics and every row.
+
+| Metric, 32 cases with relevant sources | Semantic | Hybrid RRF |
+|---|---:|---:|
+| Hit@3 | 96.875% | 96.875% |
+| Mean Recall@3 | 92.1875% | 93.75% |
+| MRR | 0.8941 | 0.9219 |
+| nDCG@3 | 0.8793 | 0.9059 |
+| Missing-information queries returning passages | 8/8 | 8/8 |
+
+[Semantic report](../evaluation-challenge-semantic.json) · [Hybrid report](../evaluation-challenge-hybrid.json). Semantic retrieval misses c12, the diacritized permissions question, within the first three sources. Hybrid retrieval recovers that case but misses c03, the dialectal lost-device question. Fusion improves some ranks while introducing a different failure; it does not dominate every query. No ranking parameters were changed to optimize these reports. This is still a visible, AI-assisted synthetic diagnostic; it does not establish general Arabic retrieval quality.
+
+The browser fixture hash is SHA-256 of `JSON.stringify` on its bundled object. The CLI diagnostic hashes the raw fixture-file bytes. The reports explicitly label these formats; their fixture hashes are not expected to match. Corpus fingerprints use the same validated document representation.

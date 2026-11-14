@@ -14,3 +14,6 @@ jobs:
       - run: npm run evaluate
       - run: npm run evaluate:challenge
       - run: git diff --exit-code -- evaluation.json evaluation-challenge.json
+      - run: node scripts/verify-evidence.cjs examples/public-workspace.json examples/evidence-search.json
+      - run: python3 scripts/build_pages.py
+      - run: git diff --exit-code -- retrieval/index.html actions/index.html

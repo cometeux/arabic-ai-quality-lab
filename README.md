@@ -4,17 +4,21 @@ Two small tools around recurring AI-product questions: where did the evidence co
 
 [Current search demo](https://huggingface.co/spaces/Deema9/arabic-retrieval-lab) · [Current action-review demo](https://huggingface.co/spaces/Deema9/action-review)
 
-Version 0.3 adds a harder retrieval diagnostic, reproducible source-level metrics, and interaction fixes. [Failure analysis](docs/EVALUATION.md) · [Verification record](docs/VERIFY.md).
+Version 0.4 makes the search experiment an evidence workspace: import public documents, save/restore a local snapshot, export the corpus and quotations, and verify those quotations offline.
+
+[Case study / ملخص بالعربي](docs/CASE_STUDY.md) · [Architecture](docs/ARCHITECTURE.md) · [Failure analysis](docs/EVALUATION.md) · [Verification record](docs/VERIFY.md)
 
 ## Search workspace
 
-A small text-ingestion and evidence-retrieval pipeline:
+A browser workspace with text ingestion, retrieval and an auditable export:
 
 1. Validate a corpus of up to 60 documents / 80,000 characters.
 2. Split into overlapping character chunks and retain exact source positions.
 3. Compare normalized BM25, multilingual-e5 embeddings, or reciprocal-rank fusion.
 4. Inspect the source and export the quoted passage with its location.
-5. Run the visible synthetic cases and export per-query results.
+5. Run the visible 40-case challenge and export per-query metrics.
+6. Save/restore one optional IndexedDB snapshot, or download a versioned workspace JSON.
+7. Export evidence with exact source spans and a corpus fingerprint; verify it against the workspace offline.
 
 Semantic mode uses the existing multilingual-e5-small model from intfloat, converted to ONNX by Xenova, via Transformers.js 3.8.1. Model weights currently resolve from the Hub's main revision. The first run downloads approximately 120 MB plus tokenizer/runtime files. Inference is intended to run in the browser without an inference API key; model loading and inference were verified in desktop Chrome. The interface reports loading errors rather than simulating successful inference.
 
@@ -37,6 +41,20 @@ python3 -m http.server 8080
 ```
 
 Open /retrieval/ or /actions/. Lexical search and task rules require no model. Semantic search requires a compatible browser and initial network download.
+
+## Verify an evidence export
+
+Download both the workspace and search evidence from the UI, then run:
+
+```sh
+node scripts/verify-evidence.cjs arabic-workspace.json evidence-search.json
+```
+
+A changed corpus, title, quotation or invalid span fails with a nonzero exit code. This checks source-text integrity, not claim correctness or author authenticity. Try the committed synthetic example:
+
+```sh
+node scripts/verify-evidence.cjs examples/public-workspace.json examples/evidence-search.json
+```
 
 ## Evaluation
 
@@ -74,4 +92,4 @@ Created for Deema Alrafi with AI coding assistance in November 2026. Product dir
 
 ## Limits
 
-Small prototype; no PDF parsing, generated answers, database, authentication or document-access policy. Character splitting can cut a sentence. Similarity is not entailment. Desktop interaction and model inference were checked; mobile, full keyboard/screen-reader and cross-browser behavior remain unverified. Hosting/CDN/model downloads produce ordinary access logs even when text inference stays local.
+Small prototype; no PDF parsing, generated answers, server database, authentication or document-access policy. Optional browser IndexedDB storage is explicit and not encrypted by the app; browser cleanup can remove it. Keep a JSON backup. Character splitting can cut a sentence, while preserving exact UTF-16 spans and surrogate pairs. Similarity is not entailment. Desktop interaction and model inference were checked; mobile, full keyboard/screen-reader and cross-browser behavior remain unverified. Hosting/CDN/model downloads produce ordinary access logs even when text inference stays local.

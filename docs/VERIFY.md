@@ -43,3 +43,18 @@ Not verified: mobile viewport behavior, full keyboard traversal, screen-reader o
 Native Chrome's responsive preview was set to **320 CSS pixels**. Inspected both local bundled pages: headings, controls, results and the notebook's single-column owner/date fields. The task list intentionally scrolls horizontally within its own strip. Opened the search source dialog: it exposed its source title, focused its close button, closed with Escape and returned focus to its trigger. The new header SVG was also visually inspected in Chrome.
 
 This is a targeted responsive and keyboard check, not full accessibility certification. Screen-reader speech, complete keyboard traversal, multiple physical phones, other browsers and production-scale performance remain unverified. UI source changes are included in this repository; hosted deployment verification is recorded separately when performed.
+
+## v0.4 — local workspace and auditable exports
+
+39 Node tests passed locally, including the versioned workspace contract, corpus fingerprints, citation tampering, source deduplication, invalid queries, UTF-16/emoji boundaries and offline CLI exit codes. Both bundled browser scripts pass syntax checking. The committed synthetic workspace/report pair also verifies without any model or network call.
+
+Actual local Chrome session:
+
+- Imported two invented public library snippets, changed the workspace name, and saved an IndexedDB snapshot.
+- Reloaded the page, manually restored it, and observed the saved name and both documents. Evaluation was disabled for this custom corpus.
+- Searched for an exact term, downloaded the workspace and evidence JSON, and ran the offline verifier against those actual downloads: valid=true, one quotation.
+- Restored Challenge 1, loaded the actual q8 model, and ran all 40 cases in semantic and hybrid modes. Both reports were downloaded, parsed and committed. See evaluation-challenge-semantic.json and evaluation-challenge-hybrid.json.
+
+The lexical engine does not stem Arabic words: “الكتب” does not match “كتب” by itself. This limitation was observed and remains explicit. The semantic model is optional; the app does not pretend that lexical matching understands synonyms.
+
+Hosted validation, JSON-file restoration, multiple TXT upload and the final responsive check are recorded below when executed. No user-study or production-reliability result is inferred from these functional checks.

@@ -1,0 +1,1312 @@
+{
+  "schema": "arabic-retrieval-evaluation",
+  "version": 1,
+  "appVersion": "0.4.0",
+  "fixture": "challenge-1",
+  "mode": "semantic",
+  "model": {
+    "id": "Xenova/multilingual-e5-small",
+    "base": "intfloat/multilingual-e5-small",
+    "runtime": "@huggingface/transformers@3.8.1",
+    "dtype": "q8",
+    "device": "wasm",
+    "pooling": "mean",
+    "normalize": true,
+    "prefixes": [
+      "query: ",
+      "passage: "
+    ]
+  },
+  "corpusSha256": "b137334effdf0662352c9a1c84220adb0bc26462d8306e44ca1b211d01800ab6",
+  "fixtureSha256": "2453f2bd67f1414666486507a53de69db34b65b7a23eaae8b366b55a20c3f804",
+  "fixtureHashFormat": "JSON.stringify of the bundled object; differs from the CLI raw-file-byte hash",
+  "scope": "Visible synthetic diagnostic; labels are AI-assisted, not independent or held-out. Source relevance is separate from claim support.",
+  "baseline": {
+    "cases": 40,
+    "withRelevantSources": 32,
+    "hitAtK": 0.84375,
+    "recallAtK": 0.828125,
+    "mrr": 0.7708333333333333,
+    "ndcgAtK": 0.7748352340330176,
+    "unrelated": 8,
+    "unrelatedWithResults": 6
+  },
+  "current": {
+    "cases": 40,
+    "withRelevantSources": 32,
+    "hitAtK": 0.96875,
+    "recallAtK": 0.921875,
+    "mrr": 0.8940972222222222,
+    "ndcgAtK": 0.8792770689703528,
+    "unrelated": 8,
+    "unrelatedWithResults": 8
+  },
+  "rows": [
+    {
+      "id": "c01",
+      "query": "كم يوم أقدر أداوم من البيت؟",
+      "category": "paraphrase",
+      "relevant_source_ids": [
+        "remote"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "training",
+          "remote"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 0.5,
+        "ndcgAtK": 0.6309297535714575,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "remote",
+          "backup",
+          "library-room"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c02",
+      "query": "خلص شغلي، وين أسلم اللابتوب؟",
+      "category": "paraphrase",
+      "relevant_source_ids": [
+        "device"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [],
+        "hit": false,
+        "recallAtK": 0,
+        "reciprocalRank": 0,
+        "ndcgAtK": 0,
+        "returned": false
+      },
+      "current": {
+        "top_ids": [
+          "device",
+          "device-loss",
+          "access-request"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c03",
+      "query": "ضاعت علي آلة العمل، مين أكلم؟",
+      "category": "paraphrase",
+      "relevant_source_ids": [
+        "device-loss",
+        "incident"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "travel-cancel",
+          "travel",
+          "remote"
+        ],
+        "hit": false,
+        "recallAtK": 0,
+        "reciprocalRank": 0,
+        "ndcgAtK": 0,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "device",
+          "device-loss",
+          "support"
+        ],
+        "hit": true,
+        "recallAtK": 0.5,
+        "reciprocalRank": 0.5,
+        "ndcgAtK": 0.38685280723454163,
+        "returned": true
+      }
+    },
+    {
+      "id": "c04",
+      "query": "أبي أدخل نظام ما عندي عليه وصول",
+      "category": "paraphrase",
+      "relevant_source_ids": [
+        "access-request"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [],
+        "hit": false,
+        "recallAtK": 0,
+        "reciprocalRank": 0,
+        "ndcgAtK": 0,
+        "returned": false
+      },
+      "current": {
+        "top_ids": [
+          "access-request",
+          "support",
+          "access"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c05",
+      "query": "مين يشيك مسودة الاجتماع قبل تصير نهائية؟",
+      "category": "paraphrase",
+      "relevant_source_ids": [
+        "minutes"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "recording",
+          "leave",
+          "minutes"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 0.3333333333333333,
+        "ndcgAtK": 0.5,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "recording",
+          "minutes",
+          "leave"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 0.5,
+        "ndcgAtK": 0.6309297535714575,
+        "returned": true
+      }
+    },
+    {
+      "id": "c06",
+      "query": "الكتاب عندي وأبي أمدد المدة",
+      "category": "paraphrase",
+      "relevant_source_ids": [
+        "library"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "library"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "library-room",
+          "library",
+          "incident"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 0.5,
+        "ndcgAtK": 0.6309297535714575,
+        "returned": true
+      }
+    },
+    {
+      "id": "c07",
+      "query": "كيف أتأكد أن الملفات ترجع بعد عطل؟",
+      "category": "paraphrase",
+      "relevant_source_ids": [
+        "backup"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "backup",
+          "travel",
+          "device"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "backup",
+          "device-loss",
+          "travel"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c08",
+      "query": "اشترينا تذاكر وبعدين ألغينا السفر، وش نسوي؟",
+      "category": "paraphrase",
+      "relevant_source_ids": [
+        "travel-cancel"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "travel-cancel",
+          "travel"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "travel-cancel",
+          "travel",
+          "library-room"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c09",
+      "query": "اِجَازَة الموظف",
+      "category": "normalization",
+      "relevant_source_ids": [
+        "leave"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "leave",
+          "access"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "leave",
+          "training",
+          "support"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c10",
+      "query": "إعاده الاجهزه بعد انتهاء التكليف",
+      "category": "normalization",
+      "relevant_source_ids": [
+        "device"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "device",
+          "access",
+          "travel"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "access",
+          "device",
+          "access-request"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 0.5,
+        "ndcgAtK": 0.6309297535714575,
+        "returned": true
+      }
+    },
+    {
+      "id": "c11",
+      "query": "إخفاء البيانات الشخصيه في الاختبار",
+      "category": "normalization",
+      "relevant_source_ids": [
+        "privacy"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "privacy",
+          "remote"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "privacy",
+          "device-loss",
+          "backup"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c12",
+      "query": "صَلاحيّات الأَنْظِمَة",
+      "category": "normalization",
+      "relevant_source_ids": [
+        "access"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [],
+        "hit": false,
+        "recallAtK": 0,
+        "reciprocalRank": 0,
+        "ndcgAtK": 0,
+        "returned": false
+      },
+      "current": {
+        "top_ids": [
+          "support",
+          "incident",
+          "access-request"
+        ],
+        "hit": false,
+        "recallAtK": 0,
+        "reciprocalRank": 0.1111111111111111,
+        "ndcgAtK": 0,
+        "returned": true
+      }
+    },
+    {
+      "id": "c13",
+      "query": "من يوافق على السفر ومن يراجع المصروفات؟",
+      "category": "multi_source",
+      "relevant_source_ids": [
+        "travel"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "minutes",
+          "travel-cancel",
+          "travel"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 0.3333333333333333,
+        "ndcgAtK": 0.5,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "travel",
+          "leave",
+          "travel-cancel"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c14",
+      "query": "هل أقدر أشتغل من المنزل وأنا في التدريب؟",
+      "category": "multi_source",
+      "relevant_source_ids": [
+        "remote",
+        "training"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "remote",
+          "training"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "remote",
+          "training",
+          "backup"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c15",
+      "query": "قبل تسجيل الاجتماع وبعد إعداد المحضر، ماذا أفعل؟",
+      "category": "multi_source",
+      "relevant_source_ids": [
+        "recording",
+        "minutes"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "minutes",
+          "recording",
+          "leave"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "minutes",
+          "recording",
+          "support"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c16",
+      "query": "انتهى التكليف، ماذا يحدث للجهاز وللوصول؟",
+      "category": "multi_source",
+      "relevant_source_ids": [
+        "device",
+        "access"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "access",
+          "device"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "access",
+          "device",
+          "device-loss"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c17",
+      "query": "كيف أبلغ عن فقد الحاسب؟",
+      "category": "multi_source",
+      "relevant_source_ids": [
+        "device-loss",
+        "incident"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "device-loss",
+          "device"
+        ],
+        "hit": true,
+        "recallAtK": 0.5,
+        "reciprocalRank": 1,
+        "ndcgAtK": 0.6131471927654584,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "device-loss",
+          "device",
+          "access"
+        ],
+        "hit": true,
+        "recallAtK": 0.5,
+        "reciprocalRank": 1,
+        "ndcgAtK": 0.6131471927654584,
+        "returned": true
+      }
+    },
+    {
+      "id": "c18",
+      "query": "كيف أطلب صلاحية وما قواعد مراجعتها؟",
+      "category": "multi_source",
+      "relevant_source_ids": [
+        "access-request",
+        "access"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [],
+        "hit": false,
+        "recallAtK": 0,
+        "reciprocalRank": 0,
+        "ndcgAtK": 0,
+        "returned": false
+      },
+      "current": {
+        "top_ids": [
+          "access",
+          "minutes",
+          "support"
+        ],
+        "hit": true,
+        "recallAtK": 0.5,
+        "reciprocalRank": 1,
+        "ndcgAtK": 0.6131471927654584,
+        "returned": true
+      }
+    },
+    {
+      "id": "c19",
+      "query": "كم مدة حجز قاعة المكتبة؟",
+      "category": "distractor",
+      "relevant_source_ids": [
+        "library-room"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "library-room",
+          "travel",
+          "library"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "library-room",
+          "library",
+          "training"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c20",
+      "query": "كم مدة استعارة كتب المكتبة؟",
+      "category": "distractor",
+      "relevant_source_ids": [
+        "library"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "library-room",
+          "library"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 0.5,
+        "ndcgAtK": 0.6309297535714575,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "library",
+          "library-room",
+          "backup"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c21",
+      "query": "هل حفظ التسجيل يعني اعتماد المحضر؟",
+      "category": "distractor",
+      "relevant_source_ids": [
+        "recording",
+        "minutes"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "recording",
+          "minutes",
+          "travel"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "recording",
+          "minutes",
+          "backup"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c22",
+      "query": "من يستقبل عطل الجهاز وليس فقده؟",
+      "category": "distractor",
+      "relevant_source_ids": [
+        "support"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "support",
+          "training",
+          "remote"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "device-loss",
+          "support",
+          "access"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 0.5,
+        "ndcgAtK": 0.6309297535714575,
+        "returned": true
+      }
+    },
+    {
+      "id": "c23",
+      "query": "من يلغي التذاكر بعد إلغاء رحلة العمل؟",
+      "category": "distractor",
+      "relevant_source_ids": [
+        "travel-cancel"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "travel-cancel",
+          "travel",
+          "remote"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "travel-cancel",
+          "travel",
+          "device"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c24",
+      "query": "متى تختبر الاستعادة وليس متى تؤخذ النسخة؟",
+      "category": "distractor",
+      "relevant_source_ids": [
+        "backup"
+      ],
+      "labelRelation": "not_a_claim",
+      "baseline": {
+        "top_ids": [
+          "backup"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "backup",
+          "library",
+          "access"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c25",
+      "query": "العمل من المنزل متاح خمسة أيام للجميع",
+      "category": "contradictory_claim",
+      "relevant_source_ids": [
+        "remote",
+        "training"
+      ],
+      "labelRelation": "contradicted",
+      "baseline": {
+        "top_ids": [
+          "remote",
+          "library",
+          "training"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 0.9197207891481876,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "remote",
+          "training",
+          "access"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c26",
+      "query": "يمكن حضور فترة التدريب من المنزل",
+      "category": "contradictory_claim",
+      "relevant_source_ids": [
+        "training",
+        "remote"
+      ],
+      "labelRelation": "contradicted",
+      "baseline": {
+        "top_ids": [
+          "remote",
+          "training"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "remote",
+          "training",
+          "access"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c27",
+      "query": "أرسل الجهاز بالبريد الشخصي بعد انتهاء التكليف",
+      "category": "contradictory_claim",
+      "relevant_source_ids": [
+        "device"
+      ],
+      "labelRelation": "contradicted",
+      "baseline": {
+        "top_ids": [
+          "device",
+          "access",
+          "support"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "device",
+          "support",
+          "access-request"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c28",
+      "query": "أنتظر موعد التسليم إذا فقدت الحاسب",
+      "category": "contradictory_claim",
+      "relevant_source_ids": [
+        "device-loss"
+      ],
+      "labelRelation": "contradicted",
+      "baseline": {
+        "top_ids": [
+          "device-loss",
+          "minutes",
+          "library"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "device-loss",
+          "access",
+          "device"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c29",
+      "query": "النسخ اليومي يكفي لإثبات استرجاع الملفات",
+      "category": "contradictory_claim",
+      "relevant_source_ids": [
+        "backup"
+      ],
+      "labelRelation": "contradicted",
+      "baseline": {
+        "top_ids": [
+          "backup",
+          "privacy"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "backup",
+          "device-loss",
+          "library-room"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c30",
+      "query": "يبدأ التسجيل دون إبلاغ الحضور",
+      "category": "contradictory_claim",
+      "relevant_source_ids": [
+        "recording"
+      ],
+      "labelRelation": "contradicted",
+      "baseline": {
+        "top_ids": [
+          "recording",
+          "device-loss",
+          "travel-cancel"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "recording",
+          "library-room",
+          "access-request"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c31",
+      "query": "موافقة المدير على الإجازة غير مطلوبة",
+      "category": "contradictory_claim",
+      "relevant_source_ids": [
+        "leave"
+      ],
+      "labelRelation": "contradicted",
+      "baseline": {
+        "top_ids": [
+          "leave",
+          "minutes",
+          "access-request"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "leave",
+          "travel-cancel",
+          "access-request"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c32",
+      "query": "يمكن تجديد إعارة الكتاب دائمًا حتى مع وجود حجز",
+      "category": "contradictory_claim",
+      "relevant_source_ids": [
+        "library"
+      ],
+      "labelRelation": "contradicted",
+      "baseline": {
+        "top_ids": [
+          "library",
+          "remote",
+          "incident"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "library",
+          "library-room",
+          "backup"
+        ],
+        "hit": true,
+        "recallAtK": 1,
+        "reciprocalRank": 1,
+        "ndcgAtK": 1,
+        "returned": true
+      }
+    },
+    {
+      "id": "c33",
+      "query": "كم راتب المدير التنفيذي؟",
+      "category": "missing_information",
+      "relevant_source_ids": [],
+      "labelRelation": "not_established",
+      "baseline": {
+        "top_ids": [
+          "leave"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "leave",
+          "access",
+          "remote"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      }
+    },
+    {
+      "id": "c34",
+      "query": "ما لون كوكب نبتون؟",
+      "category": "missing_information",
+      "relevant_source_ids": [],
+      "labelRelation": "not_established",
+      "baseline": {
+        "top_ids": [],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": false
+      },
+      "current": {
+        "top_ids": [
+          "support",
+          "library",
+          "library-room"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      }
+    },
+    {
+      "id": "c35",
+      "query": "كم سعر اشتراك المكتبة؟",
+      "category": "missing_information",
+      "relevant_source_ids": [],
+      "labelRelation": "not_established",
+      "baseline": {
+        "top_ids": [
+          "library-room",
+          "library"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "library-room",
+          "library",
+          "purchase"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      }
+    },
+    {
+      "id": "c36",
+      "query": "ما الحد المالي لشراء البرمجيات؟",
+      "category": "missing_information",
+      "relevant_source_ids": [],
+      "labelRelation": "not_established",
+      "baseline": {
+        "top_ids": [
+          "purchase"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "purchase",
+          "travel",
+          "access"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      }
+    },
+    {
+      "id": "c37",
+      "query": "هل تتوفر إعارة أجهزة لوحية؟",
+      "category": "missing_information",
+      "relevant_source_ids": [],
+      "labelRelation": "not_established",
+      "baseline": {
+        "top_ids": [
+          "library"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "library",
+          "support",
+          "device-loss"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      }
+    },
+    {
+      "id": "c38",
+      "query": "أين موقع مكتب فريق الدعم؟",
+      "category": "missing_information",
+      "relevant_source_ids": [],
+      "labelRelation": "not_established",
+      "baseline": {
+        "top_ids": [
+          "device",
+          "access-request",
+          "support"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "incident",
+          "device",
+          "support"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      }
+    },
+    {
+      "id": "c39",
+      "query": "ما مدة الاحتفاظ بتسجيلات الاجتماعات؟",
+      "category": "missing_information",
+      "relevant_source_ids": [],
+      "labelRelation": "not_established",
+      "baseline": {
+        "top_ids": [],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": false
+      },
+      "current": {
+        "top_ids": [
+          "library-room",
+          "recording",
+          "access"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      }
+    },
+    {
+      "id": "c40",
+      "query": "كم عدد أيام الإجازة السنوية؟",
+      "category": "missing_information",
+      "relevant_source_ids": [],
+      "labelRelation": "not_established",
+      "baseline": {
+        "top_ids": [
+          "leave"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      },
+      "current": {
+        "top_ids": [
+          "leave",
+          "access",
+          "remote"
+        ],
+        "hit": null,
+        "recallAtK": null,
+        "reciprocalRank": 0,
+        "ndcgAtK": null,
+        "returned": true
+      }
+    }
+  ]
+}

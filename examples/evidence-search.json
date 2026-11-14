@@ -1,0 +1,20 @@
+{
+  "schema": "arabic-evidence-report",
+  "version": 1,
+  "query": "إعارة",
+  "mode": "lexical",
+  "model": null,
+  "corpusSha256": "07a8893790ca5050654cfa70d28ff2a7bc792776e5d3326bf439f55774c157a1",
+  "offsetUnit": "JavaScript UTF-16 code units",
+  "citations": [
+    {
+      "sourceId": "library",
+      "chunkId": "library#1",
+      "title": "إعارة الكتب — مثال مصطنع",
+      "quote": "تتيح المكتبة إعارة ثلاثة كتب لمدة أسبوعين. التجديد متاح مرة واحدة إذا لم يحجز الكتاب شخص آخر.",
+      "start": 0,
+      "end": 93
+    }
+  ],
+  "limitation": "Retrieved passages only; neither similarity nor a matching source proves a claim."
+}
